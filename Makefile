@@ -5,23 +5,35 @@ CC	 = cc
 FLAGS	 = -g -w -c -I.
 
 all: $(OBJS)
-	chmod +x menu.py
-	$(CC) obj/main.o -o stupidOS
-	$(CC) obj/clock.o -o bin/clock
-	$(CC) obj/calculator.o -o bin/calculator
-	$(CC) obj/random.o -o bin/random
+	@chmod +x menu.py
+	@echo "Building Main source...\n"
+	@$(CC) obj/main.o -o stupidOS
+	@echo "Building Clock...\n"
+	@$(CC) obj/clock.o -o bin/clock
+	@echo "Building Calculator...\n"
+	@$(CC) obj/calculator.o -o bin/calculator
+	@echo "Building Random Number Generator...\n"
+	@$(CC) obj/random.o -o bin/random
 
 obj/main.o: main.c
-	$(CC) $(FLAGS) main.c -std=c99 -o obj/main.o
+	@echo "Compiling Main source...\n"
+	@$(CC) $(FLAGS) main.c -std=c99 -o obj/main.o
 
 obj/clock.o: apps/clock/main.c
-	$(CC) $(FLAGS) apps/clock/main.c -o obj/clock.o -std=c99
+	@echo "Compiling Clock...\n"
+	@$(CC) $(FLAGS) apps/clock/main.c -o obj/clock.o -std=c99
 
 obj/calculator.o: apps/calculator/main.c
-	$(CC) $(FLAGS) apps/calculator/main.c -o obj/calculator.o -std=c99
+	@echo "Compiling Calculator...\n"
+	@$(CC) $(FLAGS) apps/calculator/main.c -o obj/calculator.o -std=c99
 
 obj/random.o: apps/random/main.c
-	$(CC) $(FLAGS) apps/random/main.c -o obj/random.o -std=c99
+	@echo "Compiling Random Number Generator...\n"
+	@$(CC) $(FLAGS) apps/random/main.c -o obj/random.o -std=c99
+
+dir:
+	@mkdir obj bin
+	@echo "Added directories"
 
 
 install:
