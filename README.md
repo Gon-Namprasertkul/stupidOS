@@ -13,6 +13,7 @@
 ```bash
 git clone https://github.com/ForesterBlox/stupidOS
 cd stupidOS
+make dir
 make
 make install
 ```
